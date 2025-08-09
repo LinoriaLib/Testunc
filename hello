@@ -1,0 +1,21 @@
+print("Welcome to Lolhub!")
+
+local oldPrint = print
+print = function(...)
+    oldPrint("LOLHUB:", ...)
+end
+
+getfenv().require = function(...)
+    print("Hahaha, you tried to require something!")
+    return nil
+end
+
+warn = function(...)
+    print("Warning?! More like LOL!")
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    if player.Name:lower():find("skid") then
+        player:Kick("Skids not allowed in Lolhub!")
+    end
+end) 
